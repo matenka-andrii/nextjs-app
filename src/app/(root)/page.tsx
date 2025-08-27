@@ -1,25 +1,17 @@
 // Components
 import SearchForm from '@/components/SearchForm';
 import StartupCard from '@/components/StartupCard';
+import { client } from '@/sanity/lib/client';
+import { STARTUPS_QUERY } from '@/sanity/lib/queries';
 
 export default async function Home({ searchParams }: {
     searchParams: Promise<{ query?: string }>;
 }) {
     const query = ( await searchParams ).query;
+    const posts = await client.fetch(STARTUPS_QUERY);
 
     /* Html */
     const getPosts = () => {
-        const posts = [{
-            _id: 1,
-            _createdAt: new Date(),
-            views: 55,
-            author: { _id: 1, name: 'Andrii' },
-            description: 'This is a description',
-            image: 'https://cdn.pixabay.com/photo/2022/01/07/10/38/playstation-controller-6921619_1280.jpg',
-            category: 'Playstation',
-            title: 'We Love Playstation',
-        }];
-
         if (posts?.length > 0) {
             return posts.map((post: StartupCardType) => (
                 <StartupCard key={post?._id} post={post} />
