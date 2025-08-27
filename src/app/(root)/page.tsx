@@ -1,6 +1,6 @@
 // Components
 import SearchForm from '@/components/SearchForm';
-import StartupCard from '@/components/StartupCard';
+import StartupCard, { StartupCardType } from '@/components/StartupCard';
 import { client } from '@/sanity/lib/client';
 import { STARTUPS_QUERY } from '@/sanity/lib/queries';
 
@@ -8,12 +8,12 @@ export default async function Home({ searchParams }: {
     searchParams: Promise<{ query?: string }>;
 }) {
     const query = ( await searchParams ).query;
-    const posts = await client.fetch(STARTUPS_QUERY);
+    const posts = await client.fetch<StartupCardType[]>(STARTUPS_QUERY);
 
     /* Html */
     const getPosts = () => {
         if (posts?.length > 0) {
-            return posts.map((post: StartupCardType) => (
+            return posts.map((post) => (
                 <StartupCard key={post?._id} post={post} />
             ));
         }

@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typegen": "./node_modules/@sanity/cli/bin/sanity typegen generate"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -19,6 +20,7 @@
     "next": "15.4.5",
     "next-auth": "^5.0.0-beta.29",
     "next-sanity": "^10.1.0-canary.11",
+    "ramda": "^0.31.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "sanity": "^4.6.0",

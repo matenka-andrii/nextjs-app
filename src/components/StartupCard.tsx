@@ -8,9 +8,12 @@ import { Button } from '@/components/ui/button';
 
 // Instruments
 import { formatDate } from '@/lib/utils';
+import { Author, Startup } from '@/sanity/types';
+
+export type StartupCardType = Omit<Startup, "author"> & { author?: Author };
 
 const StartupCard = ({ post }: { post: StartupCardType }) => {
-    const { _id, _createdAt, views, title, description, category, image, author: { _id: authorId, name }} = post;
+    const { _id, _createdAt, views, title, description, category, image, author } = post;
 
     return (
         <li className='startup-card group'>
@@ -25,9 +28,9 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
             </div>
             <div className="flex-between mt-5 gap-5">
                 <div className="flex-1">
-                    <Link href={`/user/${ authorId }`}>
+                    <Link href={`/user/${ author?._id }`}>
                         <p className="text-16-medium line-clamp-1">
-                            { name }
+                            { author?.name }
                         </p>
                     </Link>
                     <Link href={`/startup/${ _id }`}>
@@ -36,7 +39,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
                         </h3>
                     </Link>
                 </div>
-                <Link href={`/user/${ authorId }`}>
+                <Link href={`/user/${ author?._id }`}>
                     <Image src={`https://placehold.co/48x48`} alt="placeholder" width={48} height={48} className="rounded-full" />
                 </Link>
             </div>
@@ -47,7 +50,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
                 <Image src={image} alt="placeholder" className="startup-card_img" width={1280} height={797} />
             </Link>
             <div className="flex-between gap-3 mt-5">
-                <Link href={`/?query=${ category.toLocaleLowerCase() }`}>
+                <Link href={`/?query=${ category?.toLocaleLowerCase() }`}>
                     <p className="text-16-medium">
                         { category }
                     </p>
