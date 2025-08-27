@@ -1,8 +1,13 @@
-import { formatDate } from '@/lib/utils';
-import { EyeIcon } from 'lucide-react';
+// Core
 import Link from 'next/link';
 import Image from 'next/image';
+
+// Components
+import { EyeIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
+// Instruments
+import { formatDate } from '@/lib/utils';
 
 const StartupCard = ({ post }: { post: StartupCardType }) => {
     const { _id, _createdAt, views, title, description, category, image, author: { _id: authorId, name }} = post;
