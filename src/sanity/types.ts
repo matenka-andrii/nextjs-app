@@ -144,21 +144,21 @@ export type Playlist = {
 
 export type Startup = {
   _id: string;
-  _type: "startup";
+  _type?: "startup";
   _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
+  _updatedAt?: string;
+  _rev?: string;
+  title?: string | null;
+  slug?: Slug | null;
   author?: {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "author";
-  };
-  views?: number;
-  description?: string;
-  category?: string;
+  } | null;
+  views?: number | null;
+  description?: string | null;
+  category?: string | null;
   image: string;
   pitch?: string;
 };

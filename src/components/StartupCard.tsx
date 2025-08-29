@@ -8,9 +8,24 @@ import { Button } from '@/components/ui/button';
 
 // Instruments
 import { formatDate } from '@/lib/utils';
-import { Author, Startup } from '@/sanity/types';
+import { Slug } from '@/sanity/types';
 
-export type StartupCardType = Omit<Startup, "author"> & { author?: Author };
+export type StartupCardType = {
+    _id: string;
+    title: string | null;
+    slug: Slug | null;
+    _createdAt: string;
+    author: {
+        _id: string;
+        name: string | null;
+        image: string | null;
+        bio: string | null;
+    } | null;
+    views: number | null;
+    description: string | null;
+    category: string | null;
+    image: string | null;
+};
 
 const StartupCard = ({ post }: { post: StartupCardType }) => {
     const { _id, _createdAt, views, title, description, category, image, author } = post;
@@ -47,7 +62,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
                 <p className="startup-card_desc">
                     { description }
                 </p>
-                <Image src={image} alt="placeholder" className="startup-card_img" width={1280} height={797} />
+                { image ? <Image src={image} alt="placeholder" className="startup-card_img" width={1280} height={797} /> : null }
             </Link>
             <div className="flex-between gap-3 mt-5">
                 <Link href={`/?query=${ category?.toLocaleLowerCase() }`}>
