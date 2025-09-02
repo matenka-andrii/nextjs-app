@@ -26,13 +26,9 @@ const StartupForm = () => {
                 pitch,
             };
 
-            console.log('formValues', formValues);
-
             await formSchema.parseAsync(formValues);
 
             const result = await createPitch(prevState, formData, pitch);
-
-            console.log(result);
 
             if ( result.status === 'SUCCESS' ) {
                 toast.success('Success', {
@@ -46,8 +42,6 @@ const StartupForm = () => {
         } catch (error) {
             if ( error instanceof z.ZodError ) {
                 const fieldErrors = error.flatten().fieldErrors;
-
-                console.log('fieldErrors', fieldErrors);
 
                 setErrors(fieldErrors as unknown as Record<string, string>);
                 toast.error('Error', {

@@ -5,9 +5,10 @@ import Image from 'next/image';
 // Components
 import { EyeIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 
 // Instruments
-import { formatDate } from '@/lib/utils';
+import { cn, formatDate } from '@/lib/utils';
 import { Slug } from '@/sanity/types';
 
 export type StartupCardType = {
@@ -55,7 +56,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
                     </Link>
                 </div>
                 <Link href={`/user/${ author?._id }`}>
-                    <Image src={`https://placehold.co/48x48`} alt="placeholder" width={48} height={48} className="rounded-full" />
+                    <Image src={author?.image} alt={author?.name} width={48} height={48} className="rounded-full" />
                 </Link>
             </div>
             <Link href={`/startup/${ _id }`}>
@@ -79,5 +80,15 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
         </li>
     );
 };
+
+export const StartupCardSkeleton = () => (
+    <>
+        {[0, 1, 2, 3].map((index: number) => (
+            <li key={cn("skeleton", index)}>
+                <Skeleton className="startup-card_skeleton" />
+            </li>
+        ))}
+    </>
+);
 
 export default StartupCard;
