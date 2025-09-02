@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js App
 
-## Getting Started
+🚀 A modern web application built with [Next.js](https://nextjs.org/) and deployed on [Vercel](https://vercel.com).  
+Live Demo: [nextjs-app-nu-drab.vercel.app](https://nextjs-app-nu-drab.vercel.app)  
+Repository: [github.com/matenka-andrii/nextjs-app](https://github.com/matenka-andrii/nextjs-app)
 
-First, run the development server:
+---
+
+## ✨ Features
+
+- ⚡ **Next.js 15** with the App Router and latest rendering features
+- 🎨 **Tailwind CSS 4** for utility-first, modern styling
+- 📦 **TypeScript** for static type safety and maintainability
+- 📝 **Sanity CMS** integration for structured content and flexible queries
+- 🔐 **NextAuth.js** for secure authentication (GitHub OAuth provider)
+- 🌐 **Server-Side Rendering (SSR)**, **Incremental Static Regeneration (ISR)** and **experimental Partial Prerendering (PPR)** 
+- 🛠️ **ESLint & Prettier** for clean and consistent code
+- 🚀 Deployed on **Vercel** with CI/CD
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js 15](https://nextjs.org/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **CMS:** [Sanity](https://www.sanity.io/)
+- **Authentication:** [NextAuth.js](https://next-auth.js.org/)
+- **Deployment:** [Vercel](https://vercel.com)
+
+---
+
+## 🔑 Environment Variables
+To run the project locally, create a .env.local file in the root directory with the following variables:
 
 ```bash
+AUTH_SECRET=""
+AUTH_GITHUB_ID=""
+AUTH_GITHUB_SECRET=""
+NEXT_PUBLIC_SANITY_PROJECT_ID=""
+NEXT_PUBLIC_SANITY_DATASET=""
+NEXT_PUBLIC_SANITY_API_VERSION=""
+SANITY_WRITE_TOKEN=""
+SENTRY_AUTH_TOKEN=""
+```
+## 📦 Getting Started
+Clone the repository, install dependencies and run the development server:
+```bash 
+git clone https://github.com/matenka-andrii/nextjs-app.git
+cd nextjs-app
+
+npm install
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Deployment
+This project is deployed with Vercel.
+Push to the main branch and Vercel will automatically build and deploy the latest version.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+This project is licensed under the MIT License.
